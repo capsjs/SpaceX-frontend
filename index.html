@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpaceX Launches</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<div class="main">
+  <div class="header">
+    <h1>SpaceX Launches</h1>
+  </div>
+  <div id="next-launch-container">
+    <div id="next-launch">
+      <h2>Prochain lancement</h2>
+      <p>Date : <span id="launch-date"></span></p>
+      <p>Nom : <span id="launch-name"></span></p>
+      <p>Décompte : <span id="countdown"></span> secondes</p>
+    </div>
+  </div>
+    <div class="selector">
+      <label for="launch-filter">Lancements:</label>
+      <select id="launch-filter" class="form-select">
+        <option value="all">Tous</option>
+        <option value="success">Réussis</option>
+        <option value="failure">Echoués</option>
+      </select>
+    </div>
+  
+    <div id="launch-container">
+      <!-- fetchLaunches -->
+    </div>
+  </div>
+</div>
+<div id="popup-overlay" class="popup-overlay">
+  <div class="popup-content">
+    <button class="popup-close" id="popup-close">X</button>
+    <div id="popup-video-container">
+      <!-- youTube video embedded here -->
+    </div>
+  </div>
+</div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
