@@ -4,12 +4,13 @@ $(document).ready(function() {
 
 function fetchNextLaunch() {
   $.get(url + '/next', function(data) {
-    $('#launch-date').text(new Date(data.date_utc).toLocaleString());
     $('#launch-name').text(data.name);
+    $('#launch-date').text(new Date(data.date_utc).toLocaleString());
     countdown(new Date(data.date_utc));
   });
 }
 
+//Start countdown
 function countdown(date) {
   function updateCountDown() {
     const today = new Date().getTime();
@@ -20,6 +21,7 @@ function countdown(date) {
   setInterval(updateCountDown, 1000);
 }
 
+//Fetch all launches data
 function fetchLaunches(launchFilter = 'all') {
   $.get(url, function(data) {
     let filteredData;
@@ -34,6 +36,7 @@ function fetchLaunches(launchFilter = 'all') {
   });
 }
 
+//Display data 
 function displayLaunches(launches) {
   const launchList = $('#launch-container');
   launchList.empty();
@@ -58,11 +61,14 @@ function displayLaunches(launches) {
             </svg>
           </a></p>
           <p>Lieu de lancement : ${launch.launchpad}</p>
+          <p>Chargements: ${launch.payloads}</p>
+          <p>Clients: ${launch.ships}</p>
         </div>
     `;
     launchList.append(launchItem);
   });
 
+  //Embed youTube video
   $('.video-link').click(function(event) {
     event.preventDefault();
     const videoUrl = $(this).data('video-url');
@@ -76,7 +82,7 @@ function displayLaunches(launches) {
   });
 }
 
-// Close pop-up on button click
+// Close pop-up
 $('#popup-close').click(function() {
   $('#popup-overlay').fadeOut();
   $('#popup-video-container').html('');
@@ -85,4 +91,9 @@ $('#popup-close').click(function() {
 fetchNextLaunch();
 fetchLaunches();
 
+//Filter launches data
+$('#launch-filter').change(function() {
+  const filter = $(this).val();
+  fetchLaunches(filter);
+})
 });
