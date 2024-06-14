@@ -46,7 +46,7 @@ function displayLaunches(launches) {
      <div class="launch-data">
           <h3>${launch.name}</h3>
           <p>Date : ${launchDate}</p>
-          <p>Détail : ${launch.details || 'None available'}</p>
+          <p>Détail : ${launch.details}</p>
           <img src="${launch.links.patch.small}" alt="${launch.name}" />
           <p><a href="${launch.links.article}" target="_blank">Lire l'article</a></p>
           <p><a href="#" class="video-link" data-video-url="${launch.links.webcast}">
